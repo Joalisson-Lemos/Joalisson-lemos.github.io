@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Joalisson-lemos.github.io/",
+  base: "/Joalisson-Lemos.github.io/",
   plugins: [react(), tailwindcss()],
 })
