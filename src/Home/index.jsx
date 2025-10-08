@@ -57,8 +57,7 @@ function Home() {
           Meus Projetos
         </Link>
       </section>
-
-      <div id="projetos" className="mt-10 sm:mt-20">
+      <div id="projetos">
         <Projetos />
       </div>
     </div>
