@@ -32,8 +32,8 @@ export function CardsCarousel() {
     const updateWidth = () => {
       const w = window.innerWidth;
       let perView = 5;
-      if (w < 640) perView = 1;
-      else if (w < 1024) perView = 2;
+      if (w < 640) perView = 2;
+      else if (w < 1024) perView = 3;
       setCardsPerView(perView);
       setIsMobile(w < 1024);
       if (containerRef.current) {
@@ -123,7 +123,7 @@ export function CardsCarousel() {
             <div className="p-6">
               <Typography variant="h4" className="mb-4 font-bold text-gray-800">{modalCard.title}</Typography>
               <Typography className="text-gray-700 mb-4">{modalCard.longDescription}</Typography>
-              <div className="flex gap-4 justify-center">
+              <div className="flex gap-4 justify-center flex-wrap">
                 <a href={modalCard.codeLink} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:shadow-lg transition duration-300">
                   Ver código
                 </a>
