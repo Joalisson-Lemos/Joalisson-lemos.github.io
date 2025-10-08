@@ -1,24 +1,23 @@
-import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
-import Projetos from "./projetos";
 import { Link } from "react-router-dom";
+import Projetos from "./projetos";
 
 function Home() {
-  const text = "Transformar seus sonhos em sites!";
+  const fullText = "Transformar seus sonhos em sites!";
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
-      if (index < text.length) {
-        setDisplayedText((prev) => prev + text[index]);
-        index++;
-      } else {
+      setDisplayedText(fullText.slice(0, index + 1));
+      index++;
+      if (index === fullText.length) {
         clearInterval(interval);
         setIsTyping(false);
       }
     }, 100);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -37,9 +36,11 @@ function Home() {
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 leading-tight">
             {displayedText}
-            {isTyping && (
-              <span className="ml-1 border-r-2 border-orange-500 animate-blink"></span>
-            )}
+            <span
+              className={`ml-1 border-r-2 border-orange-500 ${
+                isTyping ? "animate-blink" : ""
+              }`}
+            ></span>
           </h2>
         </main>
 
