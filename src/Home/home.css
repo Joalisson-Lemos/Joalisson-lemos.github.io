@@ -1,1 +1,38 @@
+#carrousel {
+  overflow: hidden;
+  background-color: #ff8800;
+  padding: 20px 0;
+}
 
+.scroll-group {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+  animation-name: scrollLoop;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--scroll-duration, 15s);
+}
+
+.card {
+  flex: 0 0 auto;
+  min-width: 120px;
+  height: 120px;
+  background-color: #fffdfd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(calc(-1 * var(--scroll-distance)));
+  }
+}

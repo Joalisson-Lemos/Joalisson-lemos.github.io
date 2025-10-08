@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, createBrowserRouter } from "react-router-dom";
-import Home from "../home";
 import Layout from "../components/Layout";
+import Home from "../Home";
 
 function RouterManeger(){
     return(

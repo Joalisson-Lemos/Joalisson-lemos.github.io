@@ -9,13 +9,13 @@ const Header = () => {
     };
     return (
         
-        <header className="fixed top-0 left-0 w-full p-4 shadow-md bg-white">
+        <header className="fixed top-0 left-0 w-full py-2 shadow-md bg-white z-50">
             
-            <div className="flex items-center justify-between max-w-6xl mx-auto px-4">
+            <div className="flex items-center justify-between max-w-7x1 mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <Link to="/" className="flex items-center gap-3 shrink-0">
                     <img className="w-16 h-auto" src={logo} alt="Joalisson Lemos - Home" />
-                    <h1 className="text-3xl text-orange-600 font-extrabold">
+                    <h1 className="text-3xl text-orange-600 font-extrabold m-0">
                         Joalisson <span className="text-gray-800">Lemos</span>
                     </h1>
                 </Link>
@@ -31,13 +31,13 @@ const Header = () => {
                         
                         ${isMenuOpen ? 'flex flex-col' : 'hidden'} // <-- Exibir ou esconder no Mobile
                     `}>
-                        <Link to="/" onClick={toggleMenu} className="block py-2 text-lg text-gray-700 hover:text-orange-600 font-semibold border-b md:border-none">
+                        <Link to="/" onClick={toggleMenu} className="block py-3 text-lg text-gray-700 hover:text-orange-600 font-semibold border-b md:border-none">
                         Home
                     </Link>
-                    <Link to="/projetos" onClick={toggleMenu} className="block py-2 text-lg text-gray-700 hover:text-orange-600 font-semibold border-b md:border-none">
+                    <Link to="#projetos" onClick={toggleMenu} className="block py-3 text-lg text-gray-700 hover:text-orange-600 font-semibold border-b md:border-none">
                         Projetos
                     </Link>
-                    <Link to="/contato" onClick={toggleMenu} className="block py-2 text-lg text-gray-700 hover:text-orange-600 font-semibold">
+                    <Link to="#contato" onClick={toggleMenu} className="block py-3 text-lg text-gray-700 hover:text-orange-600 font-semibold">
                         Contato
                     </Link>
                 </nav>

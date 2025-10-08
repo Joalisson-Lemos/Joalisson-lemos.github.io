@@ -1,5 +1,6 @@
 import logo from "../assets/logo.png";
 import { useState, useEffect } from "react";
+import Projetos from "./projetos";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -25,7 +26,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center text-center p-6
+    <div><section className="min-h-screen w-full flex flex-col items-center justify-center text-center p-40
                     bg-gradient-to-b 
                     from-orange-100
                     via-orange-200 
@@ -44,13 +45,17 @@ function Home() {
       <br /> <br />
       <p className="20px font-bold">Desenvoldor front-end com experiencia em back-and</p>
          <Link 
-          to="/projetos" 
+          to="#projetos" 
           className="px-10 py-4 mt-8 text-lg font-semibold text-white bg-orange-600 hover:bg-orange-700 rounded-lg shadow-2xl shadow-orange-500/50transition duration-300 ease-in-out transform hover:scale-105" >
           Meus Projetos
       </Link>
-
-
+    </section>
+    <div>
+      <Projetos />
     </div>
+    
+    </div>
+
   );
 }
 
