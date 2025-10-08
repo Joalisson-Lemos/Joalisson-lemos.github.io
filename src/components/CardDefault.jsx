@@ -22,56 +22,73 @@ export function CardsCarousel() {
   ];
 
   const containerRef = useRef(null);
-  const [cardWidth, setCardWidth] = useState(0);
+  const [cardWidth, setCardWidth] = useState(250);
   const [scrollPos, setScrollPos] = useState(0);
   const [modalCard, setModalCard] = useState(null);
-  const [cardsPerView, setCardsPerView] = useState(5);
   const [isMobile, setIsMobile] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   useEffect(() => {
-    const updateWidth = () => {
+    const updateLayout = () => {
       const w = window.innerWidth;
-      let perView = 5;
-      if (w < 640) perView = 2;
-      else if (w < 1024) perView = 3;
-      setCardsPerView(perView);
-      setIsMobile(w < 1024);
+      setIsMobile(w < 768);
       if (containerRef.current) {
-        const width = containerRef.current.offsetWidth / perView - 16;
-        setCardWidth(width);
+        if (w < 640) setCardWidth(220);
+        else if (w < 1024) setCardWidth(240);
+        else setCardWidth(250);
+
+        const maxScroll = containerRef.current.scrollWidth - containerRef.current.clientWidth;
+        setCanScrollRight(scrollPos < maxScroll);
+        setCanScrollLeft(scrollPos > 0);
       }
     };
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
+  }, [scrollPos]);
 
-  const scrollLeft = () => setScrollPos((prev) => Math.max(prev - cardWidth - 16, 0));
-  const scrollRight = () => setScrollPos((prev) => Math.min(prev + cardWidth + 16, (cardWidth + 16) * (cards.length - cardsPerView)));
+  const scrollLeft = () => {
+    if (!containerRef.current) return;
+    const newPos = Math.max(scrollPos - (cardWidth + 20), 0);
+    setScrollPos(newPos);
+    containerRef.current.scrollTo({ left: newPos, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    if (!containerRef.current) return;
+    const maxScroll = containerRef.current.scrollWidth - containerRef.current.clientWidth;
+    const newPos = Math.min(scrollPos + (cardWidth + 20), maxScroll);
+    setScrollPos(newPos);
+    containerRef.current.scrollTo({ left: newPos, behavior: "smooth" });
+  };
 
   return (
-    <div className="relative w-full max-w-[1400px] mx-auto py-10">
-      {!isMobile && scrollPos > 0 && (
+    <div className="relative w-full max-w-[1200px] mx-auto py-10">
+      {!isMobile && canScrollLeft && (
         <button
           onClick={scrollLeft}
-          className="absolute -left-6 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white p-3 rounded-full z-10 hover:scale-110 hover:shadow-lg transition duration-300"
+          className="absolute -left-8 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white p-3 rounded-full z-10 hover:scale-110 shadow-lg transition"
         >
           {"<"}
         </button>
       )}
-      {!isMobile && scrollPos < (cardWidth + 16) * (cards.length - cardsPerView) && (
+      {!isMobile && canScrollRight && (
         <button
           onClick={scrollRight}
-          className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white p-3 rounded-full z-10 hover:scale-110 hover:shadow-lg transition duration-300"
+          className="absolute -right-8 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white p-3 rounded-full z-10 hover:scale-110 shadow-lg transition"
         >
           {">"}
         </button>
       )}
-      <div className={`overflow-hidden ${isMobile ? "overflow-x-auto scrollbar-hide relative" : ""}`}>
+
+      <div className={`overflow-hidden ${isMobile ? "overflow-x-auto scrollbar-hide" : ""}`}>
         <div
           ref={containerRef}
-          className={`flex gap-4 transition-transform duration-500 ${isMobile ? "flex-nowrap" : ""}`}
-          style={{ transform: isMobile ? "none" : `translateX(-${scrollPos}px)` }}
+          className={`flex gap-6 transition-transform duration-500 ${isMobile ? "flex-nowrap" : ""}`}
+          style={{
+            transform: isMobile ? "none" : `translateX(-${scrollPos}px)`,
+          }}
         >
           {cards.map((card, idx) => (
             <Card
@@ -79,18 +96,18 @@ export function CardsCarousel() {
               className="bg-white shadow-lg rounded-2xl overflow-hidden flex-shrink-0 hover:scale-105 transition-transform duration-300"
               style={{ width: `${cardWidth}px` }}
             >
-              <CardHeader className="relative h-56 bg-gray-200">
+              <CardHeader className="relative h-48 bg-gray-200">
                 <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
               </CardHeader>
               <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2 font-bold text-gray-800">
+                <Typography variant="h5" className="mb-2 font-bold text-gray-800">
                   {card.title}
                 </Typography>
                 <Typography className="text-gray-600 text-sm">{card.description}</Typography>
               </CardBody>
               <CardFooter className="flex justify-center pt-4">
                 <Button
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:shadow-lg transition duration-300"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition"
                   onClick={() => setModalCard(card)}
                 >
                   Saber mais
@@ -99,9 +116,6 @@ export function CardsCarousel() {
             </Card>
           ))}
         </div>
-        {isMobile && (
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 rounded-full bg-orange-400 opacity-60 animate-pulse"></div>
-        )}
       </div>
 
       {modalCard && (
@@ -124,10 +138,10 @@ export function CardsCarousel() {
               <Typography variant="h4" className="mb-4 font-bold text-gray-800">{modalCard.title}</Typography>
               <Typography className="text-gray-700 mb-4">{modalCard.longDescription}</Typography>
               <div className="flex gap-4 justify-center flex-wrap">
-                <a href={modalCard.codeLink} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:shadow-lg transition duration-300">
+                <a href={modalCard.codeLink} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition">
                   Ver código
                 </a>
-                <a href={modalCard.siteLink} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 hover:shadow-lg transition duration-300">
+                <a href={modalCard.siteLink} target="_blank" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition">
                   Ver site
                 </a>
               </div>
