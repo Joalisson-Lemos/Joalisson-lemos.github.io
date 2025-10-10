@@ -4,7 +4,7 @@ import {
   SiMysql, SiPostgresql, SiMongodb 
 } from "react-icons/si";
 import "./home.css";
-import { CardsCarousel} from "../components/CardDefault";
+import { CardsCarousel } from "../components/CardDefault";
 
 function Projetos() {
   const groupRef = useRef(null);
@@ -45,29 +45,29 @@ function Projetos() {
   }, [icons]);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-orange-500">
       <section>
-      <div id="carrousel">
-      <div className="scroll-group" ref={groupRef}>
-        {icons.map((item) => (
-          <div className="card" key={`a-${item.key}`}>{item.icon}</div>
-        ))}
-        {icons.map((item) => (
-          <div className="card" key={`b-${item.key}`}>{item.icon}</div>
-        ))}
+        <div id="carrousel">
+          <div className="scroll-group" ref={groupRef}>
+            {icons.map((item) => (
+              <div className="card" key={`a-${item.key}`}>{item.icon}</div>
+            ))}
+            {icons.map((item) => (
+              <div className="card" key={`b-${item.key}`}>{item.icon}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div>
+        <p className="text-[40px] text-orange-600 font-extrabold m-0 text-center">
+          Meus <span className="text-gray-200">projetos</span>
+        </p>
+        <br /><br /><br /><br /><br />
+        <CardsCarousel />
+        <br /><br /><br /><br /><br /><br />
       </div>
     </div>
-    </section>
-    <div>
-        <p className="text-[40px] text-orange-600 font-extrabold m-0 text-center ">Meus <span className="text-gray-800">projetos</span></p> <br /><br /><br /><br /><br />
-        <CardsCarousel />
-                        
-        
-
-
-    </div>
-    </div>
-    
   );
 }
 

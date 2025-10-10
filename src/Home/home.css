@@ -36,3 +36,13 @@
     transform: translateX(calc(-1 * var(--scroll-distance)));
   }
 }
+
+/* adicione no seu arquivo CSS global ou home.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari e Chrome */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
