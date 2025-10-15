@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Projetos from "./projetos";
+import "./home.css";
 
 function Home() {
   const fullText = "Transformar seus sonhos em sites!";
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
     let index = 0;
-    const interval = setInterval(() => {
+    const typingInterval = setInterval(() => {
       setDisplayedText(fullText.slice(0, index + 1));
       index++;
       if (index === fullText.length) {
-        clearInterval(interval);
+        clearInterval(typingInterval);
         setIsTyping(false);
       }
     }, 100);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(typingInterval);
   }, []);
 
+  useEffect(() => {
+    if (!isTyping) {
+      setCursorVisible(false);
+      return;
+    }
+    setCursorVisible(true);
+    const cursorInterval = setInterval(() => {
+      setCursorVisible((v) => !v);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, [isTyping]);
+
   return (
-    <div>
+    <div id="home">
       <section
         className="min-h-screen w-full flex flex-col items-center justify-center 
         text-center px-6 sm:px-10 md:px-20 
@@ -34,13 +48,21 @@ function Home() {
             <span className="text-black">Joalisson Lemos</span> e vou
           </h2>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 leading-tight flex items-center justify-center">
             {displayedText}
-            <span
-              className={`ml-1 border-r-2 border-orange-500 ${
-                isTyping ? "animate-blink" : ""
-              }`}
-            ></span>
+            {isTyping && (
+              <span
+                style={{
+                  display: "inline-block",
+                  marginLeft: 6,
+                  width: 2,
+                  height: "1.2em",
+                  backgroundColor: "#ea580c",
+                  visibility: cursorVisible ? "visible" : "hidden",
+                }}
+                aria-hidden="true"
+              />
+            )}
           </h2>
         </main>
 
@@ -48,15 +70,16 @@ function Home() {
           Desenvolvedor front-end com experiência em back-end.
         </p>
 
-        <Link
-          to="#projetos"
+        <a
+          href="#projetos"
           className="px-8 py-3 sm:px-10 sm:py-4 mt-8 text-base sm:text-lg font-semibold text-white 
           bg-orange-600 hover:bg-orange-700 rounded-xl shadow-lg shadow-orange-500/40 
           transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
         >
           Meus Projetos
-        </Link>
+        </a>
       </section>
+
       <div id="projetos">
         <Projetos />
       </div>

@@ -37,12 +37,26 @@
   }
 }
 
-/* adicione no seu arquivo CSS global ou home.css */
+
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Safari e Chrome */
+  display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE e Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;     
 }
+
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-start infinite;
+}
+
 
