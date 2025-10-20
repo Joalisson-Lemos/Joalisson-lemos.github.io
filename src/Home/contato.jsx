@@ -28,7 +28,7 @@ function Contato() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-orange-500 flex flex-col items-center justify-center p-4">
+    <div id="contato" className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-orange-500 flex flex-col items-center justify-center p-4">
       <h2 className="text-[40px] text-orange-600 font-extrabold mb-8 text-center">
         Contato
       </h2>
