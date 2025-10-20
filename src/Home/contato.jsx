@@ -73,7 +73,7 @@ function Contato() {
         <div className="mt-6 p-4 rounded-xl bg-gray-900 flex flex-col sm:flex-row gap-6 justify-center text-2xl sm:text-3xl md:text-4xl">
           <div className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition flex justify-center">
             <a
-              href="https://wa.me/5581999999999"
+              href="https://wa.me/5581989567057"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -83,7 +83,7 @@ function Contato() {
 
           <div className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition flex justify-center">
             <a
-              href="https://www.linkedin.com/in/seu-usuario/"
+              href="https://www.linkedin.com/in/joalisson-lemos/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -93,7 +93,7 @@ function Contato() {
 
           <div className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition flex justify-center">
             <a
-              href="https://github.com/seu-usuario"
+              href="https://github.com/joalisson-lemos"
               target="_blank"
               rel="noopener noreferrer"
             >
