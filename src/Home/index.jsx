@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Projetos from "./projetos";
+import Contato from './contato';
 import "./home.css";
 
 function Home() {
@@ -82,6 +83,10 @@ function Home() {
 
       <div id="projetos">
         <Projetos />
+      </div>
+      <div>
+        <Contato />
+      
       </div>
     </div>
   );

@@ -41,6 +41,13 @@ export function CardsCarousel() {
     window.addEventListener("resize", updateCardsPerPage);
     return () => window.removeEventListener("resize", updateCardsPerPage);
   }, []);
+  useEffect(() => {
+    if(modalCard){
+    document.body.style.overflow = "hidden";
+    } else{
+      document.body.style.overflow = "auto";
+    }
+  }, [modalCard]);
 
   const scrollToIndex = (index) => {
     if (!trackRef.current) return;
