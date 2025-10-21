@@ -29,7 +29,7 @@ export function CardsCarousel() {
   const updateCardsPerPage = () => {
     if (window.innerWidth >= 1024) setCardsPerPage(4);
     else if (window.innerWidth >= 640) setCardsPerPage(2);
-    else setCardsPerPage(1);
+    else setCardsPerPage(2);
   };
 
   useEffect(() => {
