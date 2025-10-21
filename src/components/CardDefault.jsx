@@ -19,10 +19,6 @@ export function CardsCarousel() {
     { title: "Projeto 6", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 6.", image: img6, codeLink: "#" },
     { title: "Projeto 7", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 7.", image: img7, codeLink: "#" },
     { title: "Projeto 8", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 8.", image: img8, codeLink: "#" },
-    { title: "Projeto 9", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 9.", image: img8, codeLink: "#" },
-    { title: "Projeto 10", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 10.", image: img8, codeLink: "#" },
-    { title: "Projeto 11", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 11.", image: img8, codeLink: "#" },
-    { title: "Projeto 12", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 12.", image: img8, codeLink: "#" },
   ];
 
   const trackRef = useRef(null);
@@ -33,7 +29,7 @@ export function CardsCarousel() {
   const updateCardsPerPage = () => {
     if (window.innerWidth >= 1024) setCardsPerPage(4);
     else if (window.innerWidth >= 640) setCardsPerPage(2);
-    else setCardsPerPage(2);
+    else setCardsPerPage(1);
   };
 
   useEffect(() => {
@@ -75,7 +71,7 @@ export function CardsCarousel() {
     if (!trackRef.current) return;
     const card = trackRef.current.children[0];
     if (!card) return;
-    const gap = 24;
+    const gap = 25;
     const step = (card.getBoundingClientRect().width + gap) * cardsPerPage;
     const idx = Math.round(trackRef.current.scrollLeft / step);
     setCurrentIndex(idx);
