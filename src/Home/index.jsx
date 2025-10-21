@@ -84,6 +84,9 @@ function Home() {
       <div id="projetos">
         <Projetos />
       </div>
+      <div class="h-[30px] bg-gradient-to-tr from-[#0a0e1a] via-[#1b1b1d] to-[#ff6a00]
+"></div>
+
       <div>
         <Contato />
       
