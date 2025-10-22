@@ -29,7 +29,7 @@ export function CardsCarousel() {
   const updateCardsPerPage = () => {
     if (window.innerWidth >= 1024) setCardsPerPage(4);
     else if (window.innerWidth >= 640) setCardsPerPage(2);
-    else setCardsPerPage(2);
+    else setCardsPerPage(1);
   };
 
   useEffect(() => {
@@ -37,12 +37,9 @@ export function CardsCarousel() {
     window.addEventListener("resize", updateCardsPerPage);
     return () => window.removeEventListener("resize", updateCardsPerPage);
   }, []);
+
   useEffect(() => {
-    if(modalCard){
-    document.body.style.overflow = "hidden";
-    } else{
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = modalCard ? "hidden" : "auto";
   }, [modalCard]);
 
   const scrollToIndex = (index) => {
@@ -99,32 +96,37 @@ export function CardsCarousel() {
       <div
         ref={trackRef}
         onScroll={handleScroll}
-        className="flex gap-6 flex-nowrap overflow-x-auto scrollbar-hide touch-pan-x"
-        style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
+        className="flex flex-row flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide px-4 gap-6"
+        style={{
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
+          overscrollBehaviorX: "auto",
+          touchAction: "pan-x pan-y",
+        }}
       >
         {cards.map((card, idx) => (
           <Card
             key={idx}
-            className="bg-white shadow-lg rounded-2xl overflow-hidden flex-shrink-0 hover:scale-105 transition-transform duration-300"
+            className="bg-white shadow-xl rounded-2xl overflow-hidden flex-shrink-0 flex flex-col transition-transform duration-300 md:hover:scale-105"
             style={{
               width:
                 cardsPerPage === 4
                   ? "calc((100% - 3*1.5rem)/4)"
                   : cardsPerPage === 2
                   ? "calc((100% - 1.5rem)/2)"
-                  : "100%",
+                  : "90%",
             }}
           >
             <CardHeader className="relative h-48 bg-gray-200">
               <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
             </CardHeader>
-            <CardBody>
+            <CardBody className="p-4">
               <Typography variant="h5" className="mb-2 font-bold text-gray-800">{card.title}</Typography>
               <Typography className="text-gray-600 text-sm">{card.description}</Typography>
             </CardBody>
-            <CardFooter className="flex justify-center pt-4">
+            <CardFooter className="flex justify-center pt-4 pb-4">
               <Button
-                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition"
                 onClick={() => setModalCard(card)}
               >
                 Saber mais
