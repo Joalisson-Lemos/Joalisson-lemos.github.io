@@ -11,8 +11,8 @@ import img8 from "../assets/nlw.jpg";
 
 export function CardsCarousel() {
   const cards = [
-    { title: "NLW AGENTS", description: "Descrição curta.", longDescription: "Descrição completa do NLW AGENTS.", image: img1, codeLink: "https://github.com/Joalisson-Lemos/projeto-nlw20/tree/main/nlw", siteLink: "#" },
-    { title: "Portifolio", description: "Meu portifolio feito em React e Tailwind.", longDescription: "Descrição completa do Projeto 2.", image: img2, codeLink: "https://github.com/Joalisson-Lemos/Joalisson-lemos.github.io", siteLink: "https://joalisson-lemos.github.io/" },
+    { title: "NLW AGENTS", description: "Projeto realizado pela rocktseat NLW20.", longDescription: "Projeto realizado em HTML, CSS e JS com agentes de IA em um intensivo iniciante em programação front-end.", image: img1, codeLink: "https://github.com/Joalisson-Lemos/projeto-nlw20/tree/main/nlw", siteLink: "#" },
+    { title: "Portifolio", description: "Meu portifolio.", longDescription: "Projeto realizado em React.js e tailwind CSS feito para mostrar meus projetos.", image: img2, codeLink: "https://github.com/Joalisson-Lemos/Joalisson-lemos.github.io", siteLink: "https://joalisson-lemos.github.io/" },
     { title: "Projeto 3", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 3.", image: img3, codeLink: "#", siteLink: "#" },
     { title: "Projeto 4", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 4.", image: img4, codeLink: "#" },
     { title: "Projeto 5", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 5.", image: img5, codeLink: "#" },

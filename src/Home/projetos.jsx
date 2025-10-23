@@ -60,12 +60,12 @@ function Projetos() {
       </section>
 
       <div>
-        <p className="text-[40px] text-orange-600 font-extrabold m-0 text-center">
+        <p className="text-[40px] text-orange-600 font-extrabold text-center mb-20">
           Meus <span className="text-gray-200">projetos</span>
         </p>
-        <br /><br /><br /><br /><br />
+        <div className="">
         <CardsCarousel />
-        <br /><br /><br /><br /><br /><br />
+        </div>
       </div>
     </div>
   );
