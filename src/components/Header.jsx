@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/Logo.png';
+import logo from '../assets/Logo2.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,7 +9,7 @@ const Header = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
         <a href="#home" className="flex items-center gap-2 sm:gap-3 shrink-0" onClick={() => setIsMenuOpen(false)}>
-          <img className="w-12 sm:w-16 h-auto" src={logo} alt="Joalisson Lemos - Home" />
+          <img className="w-12 sm:w-15 h-auto" src={logo} alt="Joalisson Lemos - Home" />
           <h1 className="text-2xl sm:text-3xl text-orange-600 font-extrabold m-0">
             Joalisson <span className="text-gray-800">Lemos</span>
           </h1>
