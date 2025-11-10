@@ -1,11 +1,18 @@
+@import "tailwindcss";
 @tailwind base;
-@tailwind components;
+@tailwind component;
 @tailwind utilities;
 
 @layer utilities {
-  @keyframes blink {
-    0%, 50% { opacity: 1; }
-    50.01%, 100% { opacity: 0; }
-  }
-  .animate-blink { animation: blink 1s step-end infinite; }
+        @keyframes blink {
+                0%, 50% {
+                        opacity: 1;
+                }
+                50.01%, 100% {
+                        opacity: 0;
+                }
+        }
+        .animate-blink {
+                animation: blink 1s step-end infinite;
+        }
 }
