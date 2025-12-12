@@ -3,12 +3,12 @@ import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@mat
 
 import img1 from "../assets/nlw.jpg"; 
 import img2 from "../assets/portifolio.jpg";
-import img3 from "../assets/nlw.jpg"; 
-import img4 from "../assets/nlw.jpg"; 
-import img5 from "../assets/nlw.jpg"; 
-import img6 from "../assets/nlw.jpg"; 
-import img7 from "../assets/nlw.jpg"; 
-import img8 from "../assets/nlw.jpg"; 
+import img3 from "../assets/Breve.jpg"; 
+import img4 from "../assets/Breve.jpg"; 
+import img5 from "../assets/Breve.jpg"; 
+import img6 from "../assets/Breve.jpg"; 
+import img7 from "../assets/Breve.jpg"; 
+import img8 from "../assets/Breve.jpg"; 
 
 function debounce(func, delay) {
   let timeout;
@@ -28,12 +28,12 @@ export function CardsCarousel() {
   const cards = [
     { title: "NLW AGENTS", description: "Projeto realizado pela rocktseat NLW20.", longDescription: "Projeto realizado em HTML, CSS e JS com agentes de IA em um intensivo iniciante em programação front-end.", image: img1, codeLink: "https://github.com/Joalisson-Lemos/projeto-nlw20/tree/main/nlw", siteLink: "#" },
     { title: "Portifolio", description: "Meu portifolio.", longDescription: "Projeto realizado em React.js e tailwind CSS feito para mostrar meus projetos.", image: img2, codeLink: "https://github.com/Joalisson-Lemos/Joalisson-lemos.github.io", siteLink: "https://joalisson-lemos.github.io/" },
-    { title: "Projeto 3", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 3.", image: img3, codeLink: "#", siteLink: "#" },
-    { title: "Projeto 4", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 4.", image: img4, codeLink: "#", siteLink: "#" },
-    { title: "Projeto 5", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 5.", image: img5, codeLink: "#", siteLink: "#" },
-    { title: "Projeto 6", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 6.", image: img6, codeLink: "#", siteLink: "#" },
-    { title: "Projeto 7", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 7.", image: img7, codeLink: "#", siteLink: "#" },
-    { title: "Projeto 8", description: "Descrição curta.", longDescription: "Descrição completa do Projeto 8.", image: img8, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img3, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img4, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img5, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img6, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img7, codeLink: "#", siteLink: "#" },
+    { title: "EM BREVE", description: "", longDescription: "", image: img8, codeLink: "#", siteLink: "#" },
   ];
 
   const trackRef = useRef(null);
