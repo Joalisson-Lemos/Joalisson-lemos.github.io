@@ -3,8 +3,8 @@ import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiPhp, SiPython, 
   SiMysql, SiPostgresql, SiMongodb 
 } from "react-icons/si";
-import "./home.css";
-import { CardsCarousel } from "../components/CardDefault";
+import "../assets/home.css";
+import { CardsCarousel } from "./CardDefault";
 
 function Projetos() {
   const groupRef = useRef(null);

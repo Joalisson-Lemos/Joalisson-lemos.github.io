@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import Projetos from "./projetos";
-import Contato from './contato';
-import "./home.css";
+﻿import { useState, useEffect } from "react";
+import Projetos from "./Projetos";
+import Contato from "./Contato";
+import "../assets/home.css";
 
 function Home() {
   const fullText = "Transformar seus sonhos em sites!";

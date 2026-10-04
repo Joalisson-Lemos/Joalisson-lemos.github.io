@@ -1,14 +1,6 @@
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+﻿import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
-
-import img1 from "../assets/nlw.jpg"; 
-import img2 from "../assets/portifolio.jpg";
-import img3 from "../assets/Breve.jpg"; 
-import img4 from "../assets/Breve.jpg"; 
-import img5 from "../assets/Breve.jpg"; 
-import img6 from "../assets/Breve.jpg"; 
-import img7 from "../assets/Breve.jpg"; 
-import img8 from "../assets/Breve.jpg"; 
+import projects from "../data/projects";
 
 function debounce(func, delay) {
   let timeout;
@@ -25,16 +17,7 @@ const SCROLL_DEBOUNCE_DELAY = 150;
 
 
 export function CardsCarousel() { 
-  const cards = [
-    { title: "NLW AGENTS", description: "Projeto realizado pela rocktseat NLW20.", longDescription: "Projeto realizado em HTML, CSS e JS com agentes de IA em um intensivo iniciante em programação front-end.", image: img1, codeLink: "https://github.com/Joalisson-Lemos/projeto-nlw20/tree/main/nlw", siteLink: "#" },
-    { title: "Portifolio", description: "Meu portifolio.", longDescription: "Projeto realizado em React.js e tailwind CSS feito para mostrar meus projetos.", image: img2, codeLink: "https://github.com/Joalisson-Lemos/Joalisson-lemos.github.io", siteLink: "https://joalisson-lemos.github.io/" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img3, codeLink: "#", siteLink: "#" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img4, codeLink: "#", siteLink: "#" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img5, codeLink: "#", siteLink: "#" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img6, codeLink: "#", siteLink: "#" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img7, codeLink: "#", siteLink: "#" },
-    { title: "EM BREVE", description: "", longDescription: "", image: img8, codeLink: "#", siteLink: "#" },
-  ];
+  const cards = projects;
 
   const trackRef = useRef(null);
   const [modalCard, setModalCard] = useState(null);
@@ -59,17 +42,17 @@ export function CardsCarousel() {
     document.body.style.overflow = modalCard ? "hidden" : "auto";
 
     const handleEsc = (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setModalCard(null);
       }
     };
     
     if (modalCard) {
-      document.addEventListener('keydown', handleEsc);
+      document.addEventListener("keydown", handleEsc);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEsc);
+      document.removeEventListener("keydown", handleEsc);
     };
   }, [modalCard]);
 
@@ -131,7 +114,7 @@ export function CardsCarousel() {
       {currentIndex < maxIndex && (
         <button
           onClick={scrollRight}
-          aria-label="Próximo slide" 
+          aria-label="Proximo slide" 
           className="hidden lg:block absolute -right-5 top-1/2 -translate-y-1/2 bg-orange-500 text-white p-3 rounded-full z-10 hover:scale-110 shadow-lg transition"
         >
           {">"}
@@ -208,7 +191,7 @@ export function CardsCarousel() {
               <Typography variant="h4" className="mb-4 font-bold text-gray-800">{modalCard.title}</Typography>
               <Typography className="text-gray-700 mb-4">{modalCard.longDescription}</Typography>
               <div className="flex gap-4 justify-center flex-wrap">
-                <a href={modalCard.codeLink} target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition">Ver código</a>
+                <a href={modalCard.codeLink} target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition">Ver codigo</a>
                 <a href={modalCard.siteLink} target="_blank" rel="noopener noreferrer" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md hover:scale-105 transition">Ver site</a>
               </div>
             </div>
